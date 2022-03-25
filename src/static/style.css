@@ -1,0 +1,24 @@
+.inline-block {
+   display: inline-block;
+   margin-top : -1%;
+   margin-left: 0.5%;
+}
+
+.heroes-list {
+   padding-left: 2.5%;
+   padding-top: 1%;
+}
+
+.list-attr {
+   font-weight: 900;
+}
+
+.hero-profile {
+   transition:transform 0.28s ease;
+   width: 130px;
+}
+
+.hero-profile:hover {
+   -webkit-transform:scale(1.8);
+   transform:scale(1.8);
+}
