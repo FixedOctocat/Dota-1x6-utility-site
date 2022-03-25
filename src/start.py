@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, url_for
 
 import utils.statistic as stat
 
@@ -14,6 +14,11 @@ def leaderboard():
     hero_avg = [hero.avg_rating for hero in data]
 
     return render_template("leaderboard.html", labels=hero_names, hero_fav=hero_fav, hero_avg=hero_avg)
+
+@app.route("/heroes")
+def heroes():
+    return render_template("heroes.html")
+
 
 if __name__ == '__main__':
     app.run(debug=True)
