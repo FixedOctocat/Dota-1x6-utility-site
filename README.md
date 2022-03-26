@@ -1,4 +1,14 @@
-# Dota-1x6-statistic-parser
+# Dota-1x6-utility-site
 ---
-## Tool for analysis Dota1x6 statistic from [official site](http://old.dota1x6.com/)
-![Leaderboard route](img/leaderboard_ex.png)
+### Tool routes:
+- [x] hero
+- [x] leaderboard
+- [ ] spheres
+- [ ] builds
+---
+## Hero route
+![Hero route](img/heroes.png)
+
+## Leaderboard route
+### Route for analysis Dota1x6 leaderboard statistic from [official site](http://old.dota1x6.com/)
+![Leaderboard route](img/leaderboard.png)
