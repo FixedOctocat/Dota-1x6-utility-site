@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% block title %}Heroes{% endblock %}
 {% block style %}
+    <script src="{{ url_for('static', filename='script.js') }}"></script> 
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
     <style>
         body {
@@ -11,91 +12,64 @@
     </style>
 {% endblock %}
 {% block content %}
-    <div id="banner" class="heroes-list">
-        <div>
-            <div style="display: inline-block">
-                <img src="{{ url_for('static', filename='img/strength.webp') }}", width="40px">
+    <div class="container">
+        <div class="col-9 pt-5">
+            <div class="row">
+                <div class="row">
+                    <div class="col-md-12">
+                        <img class="pull-left" style="float:left;margin-right:10px;" src="{{ url_for('static', filename='img/strength.webp') }}", width="40px">
+                        <h1 style="color:rgb(229, 75, 46)">Strength</h1>
+                    </div>
+                </div>
+                <div class="row">
+                {% for hero in strength %}
+                    <div class="col p-1">
+                        <img id="{{ hero }}" src="static/img/{{ hero }}.png" class="hero-profile" onclick="hlimage(event)">
+                    </div>
+                {% endfor %}
+                </div>
             </div>
-            <div style="display: inline-block">
-                <h1 style="color:rgb(229, 75, 46);font-size:40px;padding-left: 4px;">Strength</h1>
+            <div class="row" style="margin-top: 4%;">
+                <div class="row">
+                    <div class="col-md-12">
+                        <img class="pull-left" style="float:left;margin-right:10px;" src="{{ url_for('static', filename='img/agility.webp') }}", width="40px">
+                        <h1 style="color:rgb(101, 200, 76)">Agility</h1>
+                    </div>
+                </div>
+                <div class="row">
+                {% for hero in agility %}
+                    <div class="col p-1">
+                        <img id="{{ hero }}" src="static/img/{{ hero }}.png" class="hero-profile" onclick="hlimage(event)">
+                    </div>
+                {% endfor %}
+                </div>
             </div>
-        </div>
-        <div class="inline-block" padding-left="20px">
-            <img src="{{ url_for('static', filename='img/skeleton_king.png') }}" class="hero-profile">
-        </div>
-        <div class="inline-block">
-            <img src="{{ url_for('static', filename='img/legion_commander.png') }}" class="hero-profile">
-        </div>
-        <div class="inline-block">
-            <img src="{{ url_for('static', filename='img/pudge.png') }}" class="hero-profile">
-        </div>
-        <div class="inline-block">
-            <img src="{{ url_for('static', filename='img/bristleback.png') }}" class="hero-profile">
-        </div>
-        <div class="inline-block">
-            <img src="{{ url_for('static', filename='img/alchemist.png') }}" class="hero-profile">
-        </div>
-        <div class="inline-block">
-            <img src="{{ url_for('static', filename='img/axe.png') }}" class="hero-profile">
-        </div>
-        <div class="inline-block">
-            <img src="{{ url_for('static', filename='img/huskar.png') }}" class="hero-profile">
-        </div>
-    </div>
-    <div id="banner" class="heroes-list" style="padding-top: 4%;">
-        <div>
-            <div style="display: inline-block">
-                <img src="{{ url_for('static', filename='img/agility.webp') }}", width="40px">
+            <div class="row" style="margin-top: 4%;">
+                <div class="row">
+                    <div class="col-md-12">
+                        <img class="pull-left" style="float:left;margin-right:10px;" src="{{ url_for('static', filename='img/intelligence.webp') }}", width="40px">
+                        <h1 style="color:rgb(112, 182, 198)">Intelligence</h1>
+                    </div>
+                </div>
+                <div class="row">
+                {% for hero in intelligence %}
+                    <div class="col p-1">
+                        <img id="{{ hero }}" src="static/img/{{ hero }}.png" class="hero-profile" onclick="hlimage(event)">
+                    </div>
+                {% endfor %}
+                <div class="col p-0"></div>
+                <div class="col p-0"></div>
+                </div>
             </div>
-            <div style="display: inline-block">
-                <h1 style="color:rgba(101, 200, 76);font-size:40px;padding-left: 4px;">Agility</h1>
+            <div class="row" style="margin-top: 10%;">
+                <div class="col-md-2">
+                    <input type="submit" name="randomhero" onclick="gethero()" value="Random hero" class="btn btn-secondary"/>
+                </div>
+                <div class="col-md-2">
+                    <input type="submit" name="resetlist" onclick="resetheroeslist()" value="Reset" class="btn btn-secondary"/>
+                </div>
+                <div class="col-md-6"></div>
             </div>
-        </div>
-        <div class="inline-block" padding-left="20px">
-            <img src="{{ url_for('static', filename='img/ember_spirit.png') }}" class="hero-profile">
-        </div>
-        <div class="inline-block">
-            <img src="{{ url_for('static', filename='img/troll_warlord.png') }}" class="hero-profile">
-        </div>
-        <div class="inline-block">
-            <img src="{{ url_for('static', filename='img/nevermore.png') }}" class="hero-profile">
-        </div>
-        <div class="inline-block">
-            <img src="{{ url_for('static', filename='img/terrorblade.png') }}" class="hero-profile">
-        </div>
-        <div class="inline-block">
-            <img src="{{ url_for('static', filename='img/phantom_assassin.png') }}" class="hero-profile">
-        </div>
-        <div class="inline-block">
-            <img src="{{ url_for('static', filename='img/hoodwink.png') }}" class="hero-profile">
-        </div>
-        <div class="inline-block">
-            <img src="{{ url_for('static', filename='img/juggernaut.png') }}" class="hero-profile">
-        </div>
-    </div>
-    <div id="banner" class="heroes-list" style="padding-top: 4%;">
-        <div>
-            <div style="display: inline-block">
-                <img src="{{ url_for('static', filename='img/intelligence.webp') }}", width="40px">
-            </div>
-            <div style="display: inline-block">
-                <h1 style="color:rgb(112, 182, 198);font-size:40px;padding-left: 4px;">Intelligence</h1>
-            </div>
-        </div>
-        <div class="inline-block" padding-left="20px">
-            <img src="{{ url_for('static', filename='img/ogre_magi.png') }}" class="hero-profile">
-        </div>
-        <div class="inline-block">
-            <img src="{{ url_for('static', filename='img/lina.png') }}" class="hero-profile">
-        </div>
-        <div class="inline-block">
-            <img src="{{ url_for('static', filename='img/void_spirit.png') }}" class="hero-profile">
-        </div>
-        <div class="inline-block">
-            <img src="{{ url_for('static', filename='img/puck.png') }}" class="hero-profile">
-        </div>
-        <div class="inline-block">
-            <img src="{{ url_for('static', filename='img/queenofpain.png') }}" class="hero-profile">
         </div>
     </div>
 {% endblock %}
