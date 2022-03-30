@@ -14,3 +14,11 @@ def leaderboard():
         return None
 
     return json.loads(data.text)
+
+def heroes_all():
+    data = requests.get(API_URL + 'heroes')
+
+    if data.status_code != HTTPStatus.OK:
+        return None
+
+    return json.loads(data.text)

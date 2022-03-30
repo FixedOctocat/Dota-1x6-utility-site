@@ -15,3 +15,7 @@ def heroes_leaderbord():
     heroes = [Hero(hero.replace("npc_dota_hero_", ""), heroes_games_played[hero], heroes_rating[hero]) for hero in set(heroes)]
     sort_heroes = sorted(heroes, key=lambda hero: hero.avg_rating)
     return sort_heroes
+
+def heroes_statistic():
+    heroes_stat = api.heroes_all()
+    print(heroes_stat)
